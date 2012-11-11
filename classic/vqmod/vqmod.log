@@ -36610,3 +36610,49 @@ Could not resolve path for [catalog/language/hungarian/product/product.php] (SKI
 ----------------------------------------------------------------------
 
 
+---------- Date: 2012-11-11 03:15:32 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /classic/index.php?route=common/home
+MOD DETAILS:
+   modFile   : C:\wamp\www\classic\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+Could not resolve path for [xpto890/view/template/common/header.tpl] (SKIPPED)
+Could not resolve path for [xpto890/controller/common/header.php] (SKIPPED)
+Could not resolve path for [xpto890/view/template/common/home.tpl] (SKIPPED)
+
+MOD DETAILS:
+   modFile   : C:\wamp\www\classic\vqmod\xml\you-save.xml
+   id        : @tik Savings Note
+   version   : 1.1
+   vqmver    : 2.1.7
+   author    : OC2PS
+Could not resolve path for [catalog/language/hungarian/product/product.php] (SKIPPED)
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2012-11-11 03:15:33 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /classic/index.php?route=common/home
+MOD DETAILS:
+   modFile   : C:\wamp\www\classic\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+Could not resolve path for [xpto890/view/template/common/header.tpl] (SKIPPED)
+Could not resolve path for [xpto890/controller/common/header.php] (SKIPPED)
+Could not resolve path for [xpto890/view/template/common/home.tpl] (SKIPPED)
+
+MOD DETAILS:
+   modFile   : C:\wamp\www\classic\vqmod\xml\you-save.xml
+   id        : @tik Savings Note
+   version   : 1.1
+   vqmver    : 2.1.7
+   author    : OC2PS
+Could not resolve path for [catalog/language/hungarian/product/product.php] (SKIPPED)
+
+----------------------------------------------------------------------
+
+
