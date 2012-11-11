@@ -1,12 +1,12 @@
 <?php
 
-// Page crée par Shepard [Fabian Pijcke] <Shepard8@laposte.net>
+// Page crÃ©Ã© par Shepard [Fabian Pijcke] <Shepard8@laposte.net>
 // Arno Esterhuizen <arno.esterhuizen@gmail.com>
 // et Romain Bourdon <rromain@romainbourdon.com>
-// et Hervé Leclerc <herve.leclerc@alterway.fr>
+// et HervÃ© Leclerc <herve.leclerc@alterway.fr>
 //  
-// Mise  à jour par Herve Leclerc herve.leclerc@alterway.fr
-// Icônes par Mark James <http://www.famfamfam.com/lab/icons/silk/>
+// Mise a jour par Herve Leclerc herve.leclerc@alterway.fr
+// Ici par Mark James <http://www.famfamfam.com/lab/icons/silk/>
 
 
 
@@ -16,7 +16,8 @@ $wampConfFile = '../wampmanager.conf';
 //chemin jusqu'aux fichiers alias
 $aliasDir = '../alias/';
 
-
+//chemin jusqu'aux fichiers vhosts
+$vhostsDir = '../vhosts/';
 
 // on charge le fichier de conf locale
 if (!is_file($wampConfFile))
@@ -60,6 +61,8 @@ $langues = array(
 		'txtNoProjet' => 'No projects yet.<br />To create a new one, just create a directory in \'www\'.',
 		'txtAlias' => 'Your Aliases',
 		'txtNoAlias' => 'No Alias yet.<br />To create a new one, use the WAMPSERVER menu.',
+		'txtVhosts' => 'Your Virtual Hosts',
+		'txtNoVhosts' => 'No Virtual Hosts yet.<br />To create a new one, use the WAMPSERVER menu.',
 		'faq' => 'http://www.en.wampserver.com/faq.php'
 	),
 	'fr' => array(
@@ -77,6 +80,8 @@ $langues = array(
 		'txtNoProjet' => 'Aucun projet.<br /> Pour en ajouter un nouveau, cr&eacute;ez simplement un r&eacute;pertoire dans \'www\'.',
 		'txtAlias' => 'Vos Alias',
 		'txtNoAlias' => 'Aucun alias.<br /> Pour en ajouter un nouveau, utilisez le menu de WAMPSERVER.',
+		'txtVhosts' => 'Vos Virtual Hosts',
+		'txtNoVhosts' => 'Aucun Virtual Hosts encore.<br />Pour en ajouter un nouveau, utilisez le menu de WAMPSERVER.',
 		'faq' => 'http://www.wampserver.com/faq.php'
 	)
 );
@@ -255,11 +260,14 @@ if (isset($_GET['img']))
 
 
 
-// D?nition de la langue et des textes 
+// Definition de la langue et des textes
 
 if (isset ($_GET['lang']))
 {
-	$langue = $_GET['lang'];
+  $langue = htmlspecialchars($_GET['lang'],ENT_QUOTES);
+  if ($langue != 'en' && $langue != 'en' ) {
+   $langue = 'fr';
+  }
 }
 elseif (isset ($_SERVER['HTTP_ACCEPT_LANGUAGE']) AND preg_match("/^fr/", $_SERVER['HTTP_ACCEPT_LANGUAGE']))
 {
@@ -289,6 +297,27 @@ if (is_dir($aliasDir))
 }
 if (!isset($aliasContents))
 	$aliasContents = $langues[$langue]['txtNoAlias'];
+
+
+$vhostsContents = '';
+
+// recuperation des vhosts
+if (is_dir($vhostsDir))
+{
+    $handle=opendir($vhostsDir);
+    while ($file = readdir($handle)) 
+    {
+	    if (is_file($vhostsDir.$file) && strstr($file, '.conf'))
+	    {		
+		    $msg = '';
+		    $vhostsContents .= '<li><a href="http://'.str_replace('.conf','',$file).'/">http://'.str_replace('.conf','',$file).'</a></li>';
+	    }
+    }
+    closedir($handle);
+}
+if (!isset($vhostsContents))
+	$vhostsContents = $langues[$langue]['txtNovhosts'];
+
 
 
 // recuperation des projets
@@ -379,11 +408,11 @@ ul {
 	margin: 0;
 	padding: 0 0.2em;
 }
-ul.aliases, ul.projects, ul.tools {
+ul.vhosts, ul.aliases, ul.projects, ul.tools {
 	list-style: none;
 	line-height: 24px;
 }
-ul.aliases a, ul.projects a, ul.tools a {
+ul.vhosts a, ul.aliases a, ul.projects a, ul.tools a {
 	padding-left: 22px;
 	background: url(index.php?img=pngFolder) 0 100% no-repeat;
 }
@@ -391,6 +420,9 @@ ul.tools a {
 	background: url(index.php?img=pngWrench) 0 100% no-repeat;
 }
 ul.aliases a {
+	background: url(index.php?img=pngFolderGo) 0 100% no-repeat;
+}
+ul.vhosts a {
 	background: url(index.php?img=pngFolderGo) 0 100% no-repeat;
 }
 dl {
@@ -477,6 +509,10 @@ a:hover {
 	<h2>{$langues[$langue]['txtProjet']}</h2>
 	<ul class="projects">
 	$projectContents
+	</ul>
+	<h2>{$langues[$langue]['txtVhosts']}</h2>
+	<ul class="vhosts">
+	${vhostsContents}			
 	</ul>
 	<h2>{$langues[$langue]['txtAlias']}</h2>
 	<ul class="aliases">

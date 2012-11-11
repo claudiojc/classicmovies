@@ -9,7 +9,7 @@
 							$('input[name="address_2"]').val(unescape(resultadoCEP["bairro"]));
 							$('input[name="city"]').val(unescape(resultadoCEP["cidade"]));						$('select[name=\'zone_id\']').load('index.php?route=account/register/estado_autocompletar&estado='+unescape(resultadoCEP["uf"]));
 						}else{
-							alert("Endereço do cep não encontrado. Digite o endereço manualmente!");
+							alert("CEP não encontrado. Digite o endereço manualmente!");
 						}
 					});
 				});
