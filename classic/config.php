@@ -27,4 +27,4 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'bdtest');
 define('DB_PREFIX', '');
-?>1
+?>123

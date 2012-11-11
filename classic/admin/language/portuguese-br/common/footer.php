@@ -1,4 +1,4 @@
 <?php
 // Text
-$_['text_footer'] = 'Criado com <a href="http://www.opencart.com">OpenCart</a> &copy; 2009-' . date('Y') . ' Todos os direitos reservados.<br />Versão  %s';
+$_['text_footer'] = 'Direitos reservados a administradora do site <a href="http://www.youngdesign.com.br">Youngdesign</a>;
 ?>
